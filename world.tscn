@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx6e3j0jwkrpn"]
+
+[ext_resource type="PackedScene" uid="uid://dd38ftbls80dp" path="res://player.tscn" id="1_ga7hx"]
+[ext_resource type="Texture2D" uid="uid://f4tb3tyqgoqv" path="res://icon.svg" id="2_ecqg5"]
+[ext_resource type="PackedScene" uid="uid://b8utnynbitwu6" path="res://enemy.tscn" id="3_1q1ww"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vun0u"]
+distance = 72.0
+
+[node name="world" type="Node2D"]
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(576, 648)
+scale = Vector2(10.3125, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+shape = SubResource("WorldBoundaryShape2D_vun0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+modulate = Color(0.196078, 0.196078, 0.196078, 1)
+position = Vector2(-2.13334, -64)
+scale = Vector2(1.03333, 1)
+texture = ExtResource("2_ecqg5")
+
+[node name="player" parent="." instance=ExtResource("1_ga7hx")]
+z_index = 1
+position = Vector2(576, 520)
+
+[node name="enemy" parent="." instance=ExtResource("3_1q1ww")]
+position = Vector2(64, 520)
